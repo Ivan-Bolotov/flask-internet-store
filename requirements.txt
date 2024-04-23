@@ -1,6 +1,7 @@
 flask
-flask-wtf
-flask-login
-flask-jwt-simple
 flask-restful
+flask-jwt-simple
+flask-bcrypt
 sqlalchemy
+# flask-wtf
+# flask-login
