@@ -1,7 +1,5 @@
-flask
+flask==2.3.3
 flask-restful
-flask-jwt-simple
+flask-jwt-simple==0.0.3
 flask-bcrypt
 sqlalchemy
-# flask-wtf
-# flask-login
