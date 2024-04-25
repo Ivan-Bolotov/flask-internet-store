@@ -6,6 +6,7 @@ import flask_jwt_simple as jwt
 
 from data import db_session
 from routes import reg_and_auth, products, about
+from routes.funcs.funcs import get_amount_of_users, get_amount_of_products
 
 app = Flask(__name__)
 
@@ -21,8 +22,8 @@ app.jwt = jwt.JWTManager(app)
 @app.route("/")
 def index():
     context = dict()
-    context["amount_of_community_users"] = 25
-    context["amount_of_total_items"] = 100
+    context["amount_of_community_users"] = get_amount_of_users()
+    context["amount_of_total_items"] = get_amount_of_products()
     return render_template("index.html", **context)
 
 

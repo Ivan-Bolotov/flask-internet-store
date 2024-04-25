@@ -1,10 +1,10 @@
-from flask import Blueprint, request, make_response, jsonify, redirect, render_template
+from flask import Blueprint, request, redirect, render_template
 from flask_jwt_simple import create_jwt
 import flask_bcrypt as bcrypt
 
 from data.db_session import create_session
 from data.users import User
-
+from routes.funcs.funcs import get_amount_of_users, get_amount_of_products
 
 blueprint = Blueprint(
     "registration_and_authorisation",
@@ -18,8 +18,8 @@ counter_for_unique_avatar_name = 1_000_000
 @blueprint.route("/register", methods=["GET", "POST"])
 def register():
     context = dict()
-    context["amount_of_community_users"] = 25
-    context["amount_of_total_items"] = 100
+    context["amount_of_community_users"] = get_amount_of_users()
+    context["amount_of_total_items"] = get_amount_of_products()
 
     match request.method:
         case "GET":
@@ -68,8 +68,8 @@ def register():
 @blueprint.route("/login", methods=["GET", "POST"])
 def login():
     context = dict()
-    context["amount_of_community_users"] = 25
-    context["amount_of_total_items"] = 100
+    context["amount_of_community_users"] = get_amount_of_users()
+    context["amount_of_total_items"] = get_amount_of_products()
 
     match request.method:
         case "GET":
