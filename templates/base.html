@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ========== Мета теги ========== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TENNISINO - Digital Marketplace">
+
+    <!-- ========== Наименование ========== -->
+    <title>Online store of tennis equipment</title>
+
+    <!-- ========== Иконка ========== -->
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+
+    <!-- ========== Стили ========== -->
+    <link href="../static/styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/styles/font-awesome.css" rel="stylesheet" />
+    <link href="../static/styles/bootsnav.css" rel="stylesheet" />
+    <link href="../static/styles/main.css" rel="stylesheet">
+
+    <!-- ========== Шрифты Google ========== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Начальная загрузка -->
+    <div class="se-pre-con"></div>
+
+    <!-- Верхний header -->
+    <div class="top-bar-area bg-theme text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 basic-info text-left">
+                    <ul>
+                        <li>Total Items: <a href="/all_products">{{ amount_of_total_items }}</a></li>
+                        <li>Community Users: <strong>{{ amount_of_community_users }}</strong></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-4 login-info text-right">
+                    <a href="./login"><i class="fas fa-user"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной header -->
+    <header id="home">
+
+        <!-- NavBar -->
+        <nav class="navbar navbar-default attr-border bootsnav">
+
+            <!-- Top Search -->
+            <div class="container">
+                <div class="row">
+                    <div class="top-search">
+                        <div class="input-group">
+                            <form action="/products_by_data" method="GET">
+                                <input type="text" name="data" class="form-control" placeholder="Search">
+                                <button type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>  
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Top Search -->
+
+            <div class="container">
+
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="badge">3</span>
+                            </a>
+                            <ul class="dropdown-menu cart-list">
+                                <li>
+                                    <a href="#" class="photo"><img src="../static/images/100x100.png" class="cart-thumb" alt="" /></a>
+                                    <h6>Examin - Education and LMS Theme</h6>
+                                    <p>$49.00</p>
+                                </li>
+                                <li>
+                                    <a href="#" class="photo"><img src="../static/images/100x100.png" class="cart-thumb" alt="" /></a>
+                                    <h6>Rescaf - Food & Restaurant Template</h6>
+                                    <p>$17.00</p>
+                                </li>
+                                <li class="total">
+                                    <span class="pull-right"><strong>Total</strong>: $66.00</span>
+                                    <a href="#" class="btn btn-default btn-cart">Checkout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    </ul>
+                </div>      
+                <!-- End Atribute Navigation -->
+
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="../static/images/logo.png" class="logo" alt="Logo">
+                    </a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                        <li class="dropdown">
+                            <a href="/" class="dropdown-toggle active" data-toggle="dropdown" >Home</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/">Home Page</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Pages</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/all_products">Search Product</a></li>
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/register">Registration</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown megamenu-fw">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Product</a>
+                            <ul class="dropdown-menu megamenu-content" role="menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-menu col-md-3">
+                                            <h6 class="title">Кроссовки</h6>
+                                            <div class="content">
+                                                <ul class="menu-col">
+                                                    <li><a href="/sneakers?data=Nike">Nike</a></li>
+                                                    <li><a href="/sneakers?data=Adidas">Adidas</a></li>
+                                                    <li><a href="/sneakers?data=Asics">Asics</a></li>
+                                                    <li><a href="/sneakers?data=Babolat">Babolat</a></li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- end col-3 -->
+                                        <div class="col-menu col-md-3">
+                                            <h6 class="title">Ракетки</h6>
+                                            <div class="content">
+                                                <ul class="menu-col">
+                                                    <li><a href="rackets?data=Wilson">Wilson</a></li>
+                                                    <li><a href="rackets?data=Babolat">Babolat</a></li>
+                                                    <li><a href="rackets?data=Head">Head</a></li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- end col-3 -->
+                                        <div class="col-menu col-md-3">
+                                            <h6 class="title">Мячи</h6>
+                                            <div class="content">
+                                                <ul class="menu-col">
+                                                    <li><a href="balls?data=Wilson">Wilson</a></li>
+                                                    <li><a href="balls?data=Babolat">Babolat</a></li>
+                                                    <li><a href="balls?data=Head">Head</a></li>
+                                                    <li><a href="balls?data=Dunlop">Dunlop</a></li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- end col-3 -->
+                                        <div class="col-menu col-md-3">
+                                            <h6 class="title">Спортивная одежда</h6>
+                                            <div class="content">
+                                                <ul class="menu-col">
+                                                    <li><a href="clothes?data=Babolat">Babolat</a></li>
+                                                    <li><a href="clothes?data=Wilson">Wilson</a></li>
+                                                    <li><a href="clothes?data=Diadora">Diadora</a></li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- end col-3 -->
+                                    </div><!-- end row -->
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/new">New</a>
+                        </li>
+                        <li>
+                            <a href="/popular">Popular</a>
+                        </li>
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Blog</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog-left-sidebar.html">Left Sidebar</a></li>
+                                <li><a href="blog-right-sidebar.html">Right Sidebar</a></li>
+                                <li><a href="blog-standard.html">Standard</a></li>
+                                <li><a href="blog-single-left-sidebar.html">Single Left Sidebar</a></li>
+                                <li><a href="blog-single-right-sidebar.html">Single Right Sidebar</a></li>
+                                <li><a href="single.html">Single</a></li>
+                            </ul>
+                        </li> -->
+                        <!-- <li>
+                            <a href="contact.html">Contact</a>
+                        </li> -->
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+
+        </nav>
+        <!-- End NavBar -->
+
+    </header>
+    <!-- End Header -->
+
+    <!-- Start Search Header 
+    ============================================= -->
+    <div class="search-header bg-fixed text-center text-light" style="background-image: url(../static/images/background.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    {% block header_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block main_content %}{% endblock %}
+
+    <script src="../static/js/jquery-1.12.4.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/equal-height.min.js"></script>
+    <script src="../static/js/jquery.appear.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/count-to.js"></script>
+    <script src="../static/js/bootsnav.js"></script>
+    <script src="../static/js/main.js"></script>
+    
+</body>
+</html>

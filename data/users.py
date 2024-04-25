@@ -13,7 +13,7 @@ class User(SqlAlchemyBase):
     password = sqlalchemy.Column(sqlalchemy.String, nullable=False)
 
     avatar = sqlalchemy.Column(sqlalchemy.String, nullable=False,
-                               default="/db/avatars/default.jpg")
+                               default="./db/avatars/default.png")
 
     products_cart = sqlalchemy.Column(sqlalchemy.String)
 

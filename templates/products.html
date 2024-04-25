@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<h2>Products</h2>
+{% endblock %}
+
+{% block main_content %}
+<div class="product-single-area trend-product-area bg-gray default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="search-product-lists trend-items">
+                {% for item in products %}
+                <div class="col-md-4 equal-height">
+                    <div class="item">
+                        <div class="thumb">
+                            <a href="#"><img src="{{ item.image }}" alt="Thumb"></a>
+                            <div class="overlay">
+                                <a href="#">Add Cart</a>
+                                <a href="#">Details</a>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <div class="top-info">
+                                <h4>
+                                    <a href="#">{{ name }}</a>
+                                </h4>
+                                <div class="author">
+                                    by <a href="#">Author</a> in
+                                    <span><a href="#">Startup</a> / <a href="#">Landing</a></span>
+                                </div>
+                                <div class="item-type">
+                                    <p><i class="fas fa-chart-bar"></i> 13 Sales</p>
+                                    <div class="rating">
+                                        <div class="four-out-of-five">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-info">
+                                <div class="item-preview">
+                                    <a href="#">Preview</a>
+                                </div>
+                                <div class="price">
+                                    <h4>{{ item.cost }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

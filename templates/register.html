@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<div class="breadcrumb-items text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/">Page</a></li>
+                    <li class="active">Registration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form class="login-area bg-gray default-padding" enctype="multipart/form-data" action="/register" method="POST">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 login-custom">
+                <div class="heading text-center text-light">
+                    {% if error %}
+                        <h4 style="color: orange" >ОШИБКА: {{ error }}</h4>
+                    {% endif %}
+                    <h4>Welcome</h4>
+                </div>
+                <div class="login-items">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="form-group">
+                                <input name="login" class="form-control" placeholder="Login*" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="form-group">
+                                <input name="password" class="form-control" placeholder="Password*" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="form-group">
+                                <input name="about" class="form-control" placeholder="Some data about you" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="form-group">
+                                <input name="email" class="form-control" placeholder="Email" type="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="form-group">
+                                <input name="avatar" class="form-control" placeholder="Choose your avatar" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <button type="submit">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

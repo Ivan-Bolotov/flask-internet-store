@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<h2>Error Page</h2>
+{% endblock %}
+
+{% block main_content %}
+<div class="breadcrumb-items text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/">Page</a></li>
+                    <li class="active">404</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb Banner -->
+
+<!-- Start 404
+============================================= -->
+<div class="error-page-area bg-gray default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 thumb">
+                <img src="../../static/images/404.png" alt="Thumb">
+            </div>
+            <div class="col-md-7 error-box">
+                <h2>Sorry Page Was Not Found!</h2>
+                <a class="btn btn-theme effect btn-md" href="/">Back To Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
