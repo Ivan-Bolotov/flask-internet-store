@@ -1,8 +1,10 @@
-from flask import Blueprint, request, make_response, jsonify
+from flask import Blueprint, request, make_response, jsonify, redirect
+from flask_jwt_simple import create_jwt
 import flask_bcrypt as bcrypt
 
 from data.db_session import create_session
 from data.users import User
+
 
 blueprint = Blueprint(
     "registration_and_authorisation",
@@ -10,46 +12,81 @@ blueprint = Blueprint(
     template_folder="templates"
 )
 
+counter_for_unique_avatar_name = 1_000_000
 
-@blueprint.route("/register", methods=["POST"])
+
+@blueprint.route("/register", methods=["GET", "POST"])
 def register():
-    json_data: dict = request.json
-    if json_data.get("login") is None or json_data.get("password") is None:
-        return make_response(jsonify({"error": "Missing fields (login and password)"}), 400)
+    match request.method:
+        case "GET":
+            pass  # TODO: возвращаем страницу регистрации с формой
+        case "POST":
+            data: dict[str, str | None] = request.form.to_dict()
 
-    new_user = User(username=json_data.get("login"),
-                    password=bcrypt.generate_password_hash
-                    (json_data.get("password")).decode("utf-8"))
+            if not data.get("login").strip() or not data.get("password").strip():
+                pass  # TODO: возвращаем эту же страницу с ошибкой ввода
+                # return make_response(jsonify({"error": "Missing fields (login and password)"}), 400)
 
-    db_session = create_session()
-    db_session.add(new_user)
-    db_session.commit()
+            # сохраняем аватарку, если есть
+            if avatar := data.get("avatar").strip():
+                global counter_for_unique_avatar_name
 
-    return make_response(jsonify({"result": "OK"}), 200)
+                counter_for_unique_avatar_name += 1
+                c = counter_for_unique_avatar_name
+
+                request.files["avatar"].save(filename := f"/db/avatars{c}_img_{avatar}")
+                data["avatar"] = filename
+            else:
+                data["avatar"] = None
+
+            userdata = {
+                "username": data.get("login"),
+                "password": bcrypt.generate_password_hash
+                (data.get("password")).decode("utf-8"),
+                "about": data.get("about"),
+                "email": data.get("email"),
+            }
+
+            if data["avatar"] is not None:
+                userdata["avatar"] = data["avatar"]
+
+            # создаём нового пользователя
+            new_user = User(**userdata)
+
+            db_session = create_session()
+            db_session.add(new_user)  # добавляем нового пользователя
+            db_session.commit()
+
+            return redirect(location="/login")  # редиректим на строницу авторизации
 
 
-@blueprint.route("/login", methods=["POST"])
+@blueprint.route("/login", methods=["GET", "POST"])
 def login():
-    json_data: dict = request.json
-    if json_data.get("login") is None or json_data.get("password") is None:
-        return make_response(jsonify({"error": "Missing fields (login and password)"}), 400)
+    match request.method:
+        case "GET":
+            pass  # TODO: возвращаем страницу авторизации с формой
+        case "POST":
+            data: dict = request.form.to_dict()
 
-    new_user = User(username=json_data.get("login"),
-                    password=json_data.get("password"))
+            if data.get("login") is None or data.get("password") is None:
+                pass  # TODO: возвращаем эту же страницу с ошибкой ввода
+                # return make_response(jsonify({"error": "Missing fields (login and password)"}), 400)
 
-    db_session = create_session()
-    db_session.add(new_user)
-    db_session.commit()
+            db_session = create_session()
+            user = db_session.query(User).filter(User.username == data.get("login")).first()
+            if user is None:
+                pass  # TODO: страница ошибки авторизации
+                # return make_response(jsonify({"error": "There is no such a user"}), 401)
 
-    print(json_data)
-    return make_response(jsonify({"result": "OK"}), 200)
+            if not bcrypt.check_password_hash(user.password, data.get("password")):
+                pass  # TODO: страница ошибки ввода пароля (один тип страницы ошибок)
+                # return make_response(jsonify({"error": "Wrong password"}), 401)
 
+            # данные, которые будем хранить в JWT-токене
+            user_jwt_data = {
+                "id": user.id,
+                "login": user.username
+            }
 
-@blueprint.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({"error": "Not found"}), 404)
-
-
-@blueprint.errorhandler(400)
-def bad_request(_):
-    return make_response(jsonify({"error": "Bad Request"}), 400)
+            # TODO: редиректим на главную, но с JWT-токеном
+            # return make_response(jsonify({"token": create_jwt(identity=user_jwt_data)}), 200)

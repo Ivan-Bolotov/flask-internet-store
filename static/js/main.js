@@ -1,11 +1,3 @@
-/* ===================================================================
-    
-    Author          : Valid Theme
-    Template Name   : Markis - Digital Marketplace Template
-    Version         : 1.0
-    
-* ================================================================= */
-
 (function($) {
     "use strict";
 

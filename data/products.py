@@ -2,7 +2,7 @@ import sqlalchemy
 from .db_session import SqlAlchemyBase
 
 
-class User(SqlAlchemyBase):
+class Product(SqlAlchemyBase):
     __tablename__ = "Products"
 
     id = sqlalchemy.Column(sqlalchemy.Integer, nullable=False,

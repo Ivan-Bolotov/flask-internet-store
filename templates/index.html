@@ -17,14 +17,8 @@
     <!-- ========== Стили ========== -->
     <link href="../static/styles/bootstrap.min.css" rel="stylesheet" />
     <link href="../static/styles/font-awesome.css" rel="stylesheet" />
-    <!-- <link href="assets/css/flaticon-set.css" rel="stylesheet" /> -->
-    <!-- <link href="assets/css/magnific-popup.css" rel="stylesheet" /> -->
-    <!-- <link href="assets/css/owl.carousel.min.css" rel="stylesheet" /> -->
-    <!-- <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" /> -->
-    <!-- <link href="assets/css/animate.css" rel="stylesheet" /> -->
     <link href="../static/styles/bootsnav.css" rel="stylesheet" />
     <link href="../static/styles/main.css" rel="stylesheet">
-    <!-- <link href="assets/css/responsive.css" rel="stylesheet" /> -->
 
     <!-- ========== Шрифты Google ========== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -43,7 +37,7 @@
             <div class="row">
                 <div class="col-md-8 col-sm-8 basic-info text-left">
                     <ul>
-                        <li>Total Items: <a href="#">{{ amount_of_total_items }}</a></li>
+                        <li>Total Items: <a href="/products">{{ amount_of_total_items }}</a></li>
                         <li>Community Users: <strong>{{ amount_of_community_users }}</strong></li>
                     </ul>
                 </div>
@@ -65,8 +59,8 @@
                 <div class="row">
                     <div class="top-search">
                         <div class="input-group">
-                            <form action="#">
-                                <input type="text" name="text" class="form-control" placeholder="Search">
+                            <form action="/products_by_data" method="GET">
+                                <input type="text" name="data" class="form-control" placeholder="Search">
                                 <button type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>  
@@ -265,15 +259,11 @@
         <script src="../static/js/bootstrap.min.js"></script>
         <script src="../static/js/equal-height.min.js"></script>
         <script src="../static/js/jquery.appear.js"></script>
-        <!-- <script src="assets/js/jquery.easing.min.js"></script> -->
         <script src="../static/js/jquery.magnific-popup.min.js"></script>
-        <!-- <script src="assets/js/modernizr.custom.13711.js"></script> -->
         <script src="../static/js/owl.carousel.min.js"></script>
         <script src="../static/js/wow.min.js"></script>
-        <!-- <script src="assets/js/isotope.pkgd.min.js"></script> -->
         <script src="../static/js/imagesloaded.pkgd.min.js"></script>
         <script src="../static/js/count-to.js"></script>
-        <!-- <script src="assets/js/jquery.nice-select.min.js"></script> -->
         <script src="../static/js/bootsnav.js"></script>
         <script src="../static/js/main.js"></script>
     
